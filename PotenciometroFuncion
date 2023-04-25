@@ -1,0 +1,27 @@
+# 2ParcialProgramacion
+//Mel-c Miranda C.
+//Fecha:24/04/2023
+int pot = A1;//declaración del potenciometro
+int led = 8;//declaración de la led
+int Valor;//aqui se almacena el valor del potenciometro
+int tiempo = 400;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(pot, INPUT);
+  pinMode(led, OUTPUT);
+}
+
+void loop() {
+  Valor = analogRead(pot);
+  Serial.println(Valor);
+  delay(tiempo);
+
+  while (Valor > 1000) {
+    digitalWrite(led, HIGH);
+    Serial.println(Valor);
+    Valor = analogRead(pot);
+    delay(tiempo);
+  }
+  digitalWrite(led, LOW);
+}
